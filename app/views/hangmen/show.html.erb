@@ -1,0 +1,50 @@
+<header>
+  <h1 class="title"> The Hangman </h1>
+</header>
+
+<section>
+  <nav>
+    <%= link_to 'Back', hangmen_path %>  <%= link_to 'Start', hangman_path(@hangman) %>
+  </nav>
+  <hr>
+
+  <div class="left-column">
+    <p>
+      Suggestion: <%= @hangman.suggestion %> 
+    </p>
+    <p>
+      Clued: <%= @hangman.clued %>
+    </p>
+    <p>
+      Lives: <%= @hangman.lives %>
+    </p>
+  </div>
+  
+  <div>
+    <p class="hangman-word">
+      <%= @hangman.word_encrypted %><br><br>
+    </p> 
+    <div class="enter-letter">
+      <%= form_tag(check_letter_path) do %>
+        <%= text_field_tag :letter, params[:letter], placeholder: "Enter a Letter" %>
+
+        <button><i>Check letter</i></button>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+
+  <div>
+    <%= form_tag(check_word_path) do %>
+      <%= text_field_tag :word, params[:word], placeholder: "Enter a word" %>
+
+      <button><i>Check Word</i></button>
+    <% end %>
+  </div>
+
+</section>
+
+
+
+
+ 
